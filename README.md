@@ -4,7 +4,7 @@
 ![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 
-🔗 **Live Site:** [khalill2.github.io/Personal-website](https://khalill2.github.io/Personal-website/)
+🔗 **Live Site:** [khalill2.github.io/website-KH](https://khalill2.github.io/website-KH/)
 
 ---
 
@@ -164,8 +164,8 @@ Modern furniture branding project demonstrating expertise in visual identity, UI
 
 ```bash
 # Clone the repository
-git clone https://github.com/KHALILL2/Personal-website.git
-cd Personal-website
+git clone https://github.com/KHALILL2/website-KH.git
+cd website-KH
 
 # Option 1: Open directly in browser
 start index.html
