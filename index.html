@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; connect-src 'self' https://khalill2.github.io;">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khalil Muhammad — Communications Engineer & Cybersecurity Specialist</title>
   
@@ -33,12 +34,40 @@
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" as="style">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="assets/css/main.css?v=3.3">
+    <link rel="stylesheet" href="assets/css/main.css?v=4.0">
+  
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Khalil Muhammad",
+    "jobTitle": "Communications Engineer & Cybersecurity Specialist",
+    "description": "Portfolio of Khalil Muhammad - Communications Engineer & Cybersecurity Specialist based in Alexandria, Egypt. Specializing in system hardening, malware analysis, and full-stack development.",
+    "url": "https://khalill2.github.io/website-KH/",
+    "sameAs": [
+      "https://github.com/KHALILL2",
+      "https://www.linkedin.com/in/khalil-muhammad-ti",
+      "https://www.facebook.com/profile.php?id=100013490757521",
+      "https://instagram.com/khalil_muhammad_154"
+    ],
+    "knowsAbout": [
+      "Cybersecurity",
+      "System Hardening",
+      "Malware Analysis",
+      "Full-Stack Development",
+      "IoT Solutions",
+      "Embedded Systems"
+    ],
+  }
+  </script>
 </head>
 <body>
   
@@ -52,11 +81,26 @@
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </div>
   </nav>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-links">
+      <li><a href="#work" class="mobile-nav-link">Work</a></li>
+      <li><a href="#leadership" class="mobile-nav-link">Leadership</a></li>
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+
   <!-- Main Content -->
-  <main>
+  <main id="main-content">
     
     <!-- Hero Section -->
     <header class="hero">
@@ -107,7 +151,7 @@
       <a href="pages/nexus.html" class="leadership-feature">
         <div class="leadership-content">
           <div class="leadership-logo">
-            <img src="assets/images/NEXUS X logo.jpg" alt="NEXUS Logo">
+            <img src="assets/images/NEXUS X logo.jpg" alt="NEXUS Logo" loading="lazy">
           </div>
           <div class="leadership-info">
             <h3>NEXUS</h3>

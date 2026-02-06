@@ -5,16 +5,25 @@
 
 'use strict';
 
-// Initialize AOS (Animate On Scroll)
-if (typeof AOS !== 'undefined') {
-    AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: true,
-        offset: 100,
-        disable: 'mobile' // Disable on mobile for better performance
-    });
-}
+// ===================================
+// Global Error Handling
+// ===================================
+
+// Global error handling
+window.addEventListener('error', (e) => {
+  console.error('JavaScript Error:', {
+    message: e.message,
+    filename: e.filename,
+    lineno: e.lineno,
+    colno: e.colno,
+    stack: e.error?.stack
+  });
+});
+
+// Handle unhandled promise rejections
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Unhandled Promise Rejection:', e.reason);
+});
 
 // Navbar scroll effect
 const navbar = document.querySelector('.navbar');
@@ -71,7 +80,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Active navigation highlighting
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
+const navLinks = document.querySelectorAll('.nav-links a');
 
 function highlightActiveNav() {
     const scrollY = window.pageYOffset;
@@ -83,7 +92,9 @@ function highlightActiveNav() {
         
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             navLinks.forEach(link => {
+                link.classList.remove('active');
                 if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
                     link.style.color = '#ffffff';
                 } else {
                     link.style.color = '';
@@ -195,13 +206,6 @@ if ('fonts' in document) {
 
 // Handle reduced motion preference
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Disable AOS animations
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            disable: true
-        });
-    }
-    
     // Remove transitions
     document.querySelectorAll('*').forEach(el => {
         el.style.transition = 'none';
@@ -230,3 +234,46 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+// ===================================
+// Mobile Menu Functionality
+// ===================================
+
+// Mobile menu toggle functionality
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+// Only initialize if elements exist (for pages that have mobile menu)
+if (mobileMenuToggle && mobileMenu) {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-menu-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMobileMenu() {
+        const isActive = mobileMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+        overlay.classList.toggle('active');
+        mobileMenuToggle.setAttribute('aria-expanded', isActive);
+        document.body.style.overflow = isActive ? 'hidden' : '';
+    }
+
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    overlay.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu when clicking on nav links
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+    });
+
+    // Close mobile menu on window resize to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    });
+}
