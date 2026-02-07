@@ -1,7 +1,7 @@
 # Khalil Muhammad | Portfolio
 
 ![Status](https://img.shields.io/badge/status-active-success.svg)
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-4.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 
 🔗 **Live Site:** [khalill2.github.io/website-KH](https://khalill2.github.io/website-KH/)
@@ -28,16 +28,17 @@ The site features a sophisticated **liquid glass** design inspired by modern App
 - **Silver Palette:** Muted metallic tones (#c8c8c8, #d0d0d0, #e0e0e0) replacing harsh whites
 - **Liquid Interactions:** Smooth hover transitions with light sweep and ripple effects
 - **Dimensional Depth:** Inset highlights and layered shadows for tactile realism
+- **Responsive Mobile Navigation:** Hamburger menu with smooth slide-in animation
 
 ### Technical Approach
 
-**Zero-Framework Philosophy:** Built with vanilla HTML5, CSS3, and semantic markup—no frameworks, no build tools, no unnecessary dependencies. This architectural decision prioritizes:
+**Zero-Framework Philosophy:** Built with vanilla HTML5, CSS3, and JavaScript—no frameworks, no build tools, no unnecessary dependencies. This architectural decision prioritizes:
 
 - **Performance:** Sub-second load times with no framework overhead
-- **Security:** Minimal attack surface; no vulnerable dependencies
-- **SEO:** Clean semantic HTML with comprehensive meta tags
-- **Accessibility:** ARIA landmarks and proper heading hierarchy
-- **Responsive:** Mobile-first design from 320px to 4K displays
+- **Security:** Minimal attack surface; no vulnerable dependencies; CSP headers implemented
+- **SEO:** Clean semantic HTML with comprehensive meta tags, robots.txt, sitemap.xml, and structured data
+- **Accessibility:** WCAG AA compliant; proper ARIA labels and semantic markup
+- **Responsive:** Mobile-first design from 320px to 4K displays with touch-optimized navigation
 
 ---
 
@@ -48,11 +49,15 @@ The site features a sophisticated **liquid glass** design inspired by modern App
 ```
 Personal Website/
 ├── index.html                 # Main landing page
+├── robots.txt                 # Search engine crawler rules
+├── sitemap.xml               # XML sitemap for SEO
 ├── README.md                  # Project documentation
 ├── assets/
 │   ├── css/
-│   │   └── main.css          # Unified stylesheet (1500+ lines)
+│   │   └── main.css          # Unified stylesheet v4.0 (1634 lines)
 │   └── images/               # All project images & logos
+├── js/
+│   └── script.js             # Portfolio interactivity & mobile nav (260+ lines)
 └── pages/
     ├── nexus.html            # NEXUS team showcase
     ├── batu-timetable.html   # BATU Timetable project
@@ -62,16 +67,35 @@ Personal Website/
 
 ### CSS Architecture
 
-The `main.css` file is organized into logical sections:
+The `main.css` file (v4.0, 1634 lines) is organized into logical sections:
 
 1. **Reset & Base Configuration** - Browser normalization
 2. **Typography System** - Metallic gradients, chrome effects
-3. **Navigation Components** - Liquid glass navbar
+3. **Navigation Components** - Liquid glass navbar with mobile hamburger
 4. **Layout & Containers** - Responsive grid systems
 5. **Project Cards** - Interactive glassmorphism cards
 6. **Leadership Showcase** - Enhanced feature cards
 7. **Animations** - Chrome flow, liquid ripple, light sweep
-8. **Responsive Breakpoints** - 10+ media queries (320px → 1920px+)
+8. **Mobile Navigation** - Hamburger menu, slide-in drawer, overlay (lines 1500-1634)
+9. **Responsive Breakpoints** - 10+ media queries (320px → 1920px+)
+
+### JavaScript Architecture
+
+The `script.js` file (260+ lines) provides all interactive functionality:
+
+1. **Global Error Handling** - Graceful degradation for runtime errors
+2. **Navigation System** - Active link highlighting, smooth scrolling
+3. **Mobile Menu Logic** - Toggle hamburger, overlay management, auto-close
+4. **Scroll Effects** - Navbar transformation using requestAnimationFrame
+5. **Accessibility** - Keyboard navigation, reduced motion support
+6. **Performance** - Debounced resize listeners, efficient DOM manipulation
+
+**Key Mobile Menu Features:**
+- Creates overlay dynamically on toggle
+- Prevents body scroll when menu is open
+- Auto-closes on link click or window resize >768px
+- Smooth slide-in animation from right
+- Touch-optimized for mobile devices
 
 ---
 
@@ -138,16 +162,17 @@ Modern furniture branding project demonstrating expertise in visual identity, UI
 ### Visual Design
 - **Liquid Chrome Headings** - Animated metallic gradients
 - **Advanced Glassmorphism** - 40-45px blur with saturation boost
-- **Metallic Silver Palette** - Sophisticated muted tones
+- **Metallic Silver Palette** - Sophisticated muted tones (#c8c8c8, #d0d0d0, #e0e0e0)
 - **Liquid Interactions** - Ripple effects, light sweeps, smooth transitions
-- **Responsive Design** - Seamless across all devices
+- **Responsive Design** - Seamless across all devices (320px → 4K)
+- **Mobile Navigation** - Touch-optimized hamburger menu with smooth slide-in animation
 
 ### Technical Excellence
-- **Optimized Performance** - Preconnect hints, font display swap
-- **SEO Ready** - Open Graph, Twitter Cards, semantic HTML
-- **Accessible** - ARIA labels, semantic landmarks, keyboard navigation
+- **Optimized Performance** - Font preloading, lazy image loading, requestAnimationFrame animations
+- **SEO Optimization** - robots.txt, sitemap.xml, Schema.org JSON-LD structured data, Open Graph, Twitter Cards
+- **Security** - Content Security Policy headers, minimal attack surface
+- **Accessibility** - WCAG AA compliant color contrast, semantic HTML, ARIA landmarks, keyboard navigation
 - **Mobile-First** - Progressive enhancement from 320px
-- **Secure** - No third-party trackers, minimal dependencies
 
 ### Interactive Elements
 - **Hover Effects** - Smooth scale transforms with enhanced blur
@@ -276,19 +301,60 @@ Buttons: blur(40px) saturate(200%)
 
 ---
 
-## Recent Updates (v2.0)
+## Recent Updates (v4.0 - February 2026)
 
-### Visual Enhancements
+### Mobile Navigation (NEW)
+- **Responsive Hamburger Menu:** Touch-optimized mobile navigation with slide-in animation
+- **Breakpoint:** Activates at 768px with smooth transitions
+- **Features:** Auto-close on link click, overlay backdrop, prevents body scroll when open
+- **Position:** Fixed on right side of navbar, doesn't enlarge navigation bar
+- **Accessibility:** Keyboard accessible with proper ARIA labels
+
+### SEO & Performance Optimization
+- **robots.txt:** Search engine crawler rules configured
+- **sitemap.xml:** XML sitemap with all 5 pages indexed (priority 1.0 for home, 0.8 for projects)
+- **Structured Data:** Schema.org JSON-LD Person markup added to homepage
+- **Font Preloading:** Added preload hints for Rajdhani and Pirata One fonts
+- **Lazy Loading:** Implemented native lazy loading for all images
+- **Performance:** Sub-second load times maintained with optimized assets
+
+### Security Enhancements
+- **Content Security Policy:** Added CSP meta tags to all pages
+- **Minimal Attack Surface:** Zero-framework architecture with no vulnerable dependencies
+- **HTTPS Only:** Served exclusively via secure GitHub Pages hosting
+
+### Code Quality Improvements
+- **JavaScript Error Handling:** Global error handling with graceful fallbacks
+- **CSS Linting:** Fixed all 8 backdrop-filter vendor prefix order issues
+- **JSON-LD Validation:** Corrected structured data syntax errors
+- **Navigation Fix:** Fixed active link selector (.nav-link → .nav-links a)
+- **Removed Dependencies:** Completely removed AOS (Animate On Scroll) library
+
+### Accessibility & Standards
+- **WCAG AA Compliance:** All color contrast ratios meet accessibility standards
+- **Semantic HTML:** Proper landmark regions and heading hierarchy
+- **Keyboard Navigation:** Full keyboard accessibility with focus indicators
+- **RTL Support:** Added dir="ltr" attributes for proper text directionality
+- **Main Content IDs:** Added main-content identifiers for skip navigation compatibility
+
+### Design Refinement
+- **Silver Theme Completion:** Removed all green accent colors (#00ff41, #00cc33)
+- **Consistent Palette:** Pure metallic silver theme throughout (#c8c8c8, #d0d0d0, #e0e0e0)
+- **CSS Version:** Standardized to v4.0 across all HTML pages
+- **Responsive Navbar:** Optimized padding and positioning for mobile devices
+
+### Technical Details
+- **Files Changed:** 9 (2 new: robots.txt, sitemap.xml | 7 modified: 5 HTML, 1 CSS, 1 JS)
+- **Lines Added:** 350+ insertions
+- **Browser Support:** Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+- **Mobile Support:** iOS 14+, Chrome Mobile latest
+
+### Previous Updates (v2.0)
 - Added liquid metallic chrome aesthetic throughout
 - Implemented Apple-inspired liquid glass effects
 - Replaced bright whites with sophisticated silver tones
 - Added fluid animations (chrome flow, liquid shine, ripple effects)
 - Enhanced glassmorphism with 40-45px blur and saturation boost
-
-### Content Updates
-- Added GitHub repository link to BATU Timetable page
-- Updated all page favicons with project-specific logos
-- Enhanced meta descriptions and Open Graph tags
 
 ---
 
